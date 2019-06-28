@@ -79,7 +79,14 @@ var Engine = (function(global) {
      */
     function update(dt) {
         updateEntities(dt);
-        // checkCollisions();
+        checkCollisions();
+    }
+
+    function checkCollisions(){
+        allEnemies.forEach(enemy => {
+            if(player.y === enemy.y && (player.x - enemy.x) >= -50 && (player.x - enemy.x) <= 50)
+                player.reset();
+        })
     }
 
     /* This is called by the update function and loops through all of the
@@ -173,7 +180,7 @@ var Engine = (function(global) {
         'images/water-block.png',
         'images/grass-block.png',
         'images/enemy-bug.png',
-        'images/char-boy.png'
+        'images/char-cat-girl.png'
     ]);
     Resources.onReady(init);
 
